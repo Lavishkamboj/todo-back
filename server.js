@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 app.use(cors({ // your React app
-  origin: 'https://todo-front-bice-six.vercel.app/login',
+  origin: 'https://todo-front-bice-six.vercel.app',
   credentials: true,         // ✅allow cookies
 }));
 
