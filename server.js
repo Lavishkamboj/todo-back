@@ -11,6 +11,7 @@ const jwt=require('jsonwebtoken')
 require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const auth=require('./auth')
+const JWT_SECRET="lavish"
 
 const userTaskModel=require('./models/userTask')
 
@@ -37,7 +38,7 @@ app.post('/send_inputData',async(req,res)=>{
     }
   
     try {
-      const decoded = jwt.verify(token, process.env.jwt_secret);
+      const decoded = jwt.verify(token,JWT_SECRET);
       req.user = decoded; // make user info available in req
       user_name=req.user.user;
       console.log(user_name)
@@ -69,7 +70,7 @@ const token = req.cookies.token;
     }
   
     try {
-      const decoded = jwt.verify(token, process.env.jwt_secret);
+      const decoded = jwt.verify(token,JWT_SECRET);
       req.user = decoded; // make user info available in req
       user_name=req.user.user;
       console.log(user_name)
@@ -111,7 +112,7 @@ const token=jwt.sign({
   user:req.body.username,
   pass:req.body.password
 },
-process.env.JWT_SECRET
+JWT_SECRET
 )
 console.log("token-"+token)
 
@@ -158,7 +159,7 @@ app.post('/login', async (req, res) => {
   user:username,
   pass:password
 },
-process.env.JWT_SECRET
+JWT_SECRET
 )
 console.log("token-"+token)
 
