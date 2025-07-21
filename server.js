@@ -8,7 +8,6 @@ const db=require('./config/db')
 const userModel=require('./models/user')
 const bcrypt=require('bcrypt')
 const jwt=require('jsonwebtoken')
-require('dotenv').config()
 const cookieParser = require('cookie-parser')
 const auth=require('./auth')
 const JWT_SECRET="lavish"
