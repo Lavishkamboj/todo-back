@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const JWT_SECRET="lavish"
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.token;
@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.jwt_secret);
+    const decoded = jwt.verify(token,JWT_SECRET);
     req.user = decoded; // make user info available in req
    
     next();
