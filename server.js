@@ -91,12 +91,12 @@ app.get('/getUserData', async (req, res) => {
 app.get('/log-out', (req, res) => {
   try {
     res.clearCookie('token', {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
       sameSite: 'lax',
       path: '/',
     });
-     res.setHeader('Set-Cookie', 'token=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0');
+    
     res.json({ message: 'Logged out successfully' });
   } catch (err) {
     console.error('Logout error:', err);
@@ -134,9 +134,9 @@ app.post('/signup', async (req, res) => {
     console.log("token-" + token);
 
     res.cookie('token', token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
-      sameSite: 'lax',
+      sameSite: 'none',
       path: '/',
       maxAge: 86400000
     });
@@ -173,9 +173,9 @@ app.post('/login', async (req, res) => {
     console.log("token-" + token);
 
     res.cookie('token', token, {
-      httpOnly: false,
+      httpOnly: true,
       secure: true,
-      sameSite: 'lax',
+      sameSite: 'none',
       path: '/',
       maxAge: 86400000
     });
