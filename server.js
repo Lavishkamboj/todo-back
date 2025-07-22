@@ -91,8 +91,8 @@ app.get('/getUserData', async (req, res) => {
 app.get('/log-out', (req, res) => {
   try {
     res.clearCookie('token', {
-      httpOnly: true,
-      secure: false,
+      httpOnly: false,
+      secure: true,
       sameSite: 'lax',
       path: '/',
     });
@@ -133,7 +133,7 @@ app.post('/signup', async (req, res) => {
     console.log("token-" + token);
 
     res.cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: 'none',
       path: '/',
@@ -172,7 +172,7 @@ app.post('/login', async (req, res) => {
     console.log("token-" + token);
 
     res.cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: 'none',
       path: '/',
