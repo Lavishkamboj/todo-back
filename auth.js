@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = "lavish";
 
 const requireAuth = (req, res, next) => {
   try {
@@ -9,7 +8,7 @@ const requireAuth = (req, res, next) => {
       return res.status(401).send('Access denied. No token provided.');
     }
 
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token,process.env.JWT_SECRET);
     req.user = decoded;
 
     next();
