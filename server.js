@@ -94,6 +94,7 @@ app.get('/log-out', (req, res) => {
       httpOnly: true,
       secure: false,
       sameSite: 'lax',
+      path: '/',
     });
     res.json({ message: 'Logged out successfully' });
   } catch (err) {
