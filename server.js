@@ -36,7 +36,7 @@ app.post('/send_inputData', async (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token,process.env.JWT_SECRET);
     req.user = decoded;
     user_name = req.user.user;
     console.log(user_name);
@@ -75,7 +75,7 @@ app.get('/getUserData', async (req, res) => {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token,process.env.JWT_SECRET);
     req.user = decoded;
     user_name = req.user.user;
     console.log(user_name);
@@ -127,7 +127,7 @@ app.post('/signup', async (req, res) => {
     const token = jwt.sign({
       user: req.body.username,
       pass: req.body.password
-    }, JWT_SECRET);
+    },process.env.JWT_SECRET);
 
     console.log("token-" + token);
 
@@ -166,7 +166,7 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign({
       user: username,
       pass: password
-    }, JWT_SECRET);
+    },process.env.JWT_SECRET);
 
     console.log("token-" + token);
 
