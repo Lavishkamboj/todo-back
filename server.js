@@ -11,7 +11,7 @@ const jwt=require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const auth=require('./auth')
 const JWT_SECRET="lavish"
-
+require('dotenv').config()
 const userTaskModel=require('./models/userTask')
 
 //handling middlewares
@@ -181,6 +181,6 @@ console.log('Cookie being set:', token);
   }
 });
 
-app.listen(8000,()=>{
-    console.log('listening at 8000');
+app.listen(process.env.PORT||8000,()=>{
+    console.log('listening at Ptani');
 })
